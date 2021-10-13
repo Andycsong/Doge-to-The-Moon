@@ -1,0 +1,36 @@
+@use "font" as *;
+
+.display{
+    opacity: 1;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: #e1b303;    
+    font-weight: 700;
+    font-family: 'Orbitron';
+
+    &-right{
+        font-weight: 600;
+        position: absolute;
+        right: 16vh;
+        bottom: 10vh;
+        width: 200px;
+        margin: 0;
+    }
+
+    &__title-score{
+        
+        color: #FF3131;
+        font-size: 4rem;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    &__score{
+       font-size: 6rem;
+       font-weight: 600;
+       margin: 0; 
+    }
+    
+}
