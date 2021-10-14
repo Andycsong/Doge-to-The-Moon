@@ -1,4 +1,5 @@
 @use "font" as *;
+@use "mixins" as *;
 
 .display{
     opacity: 1;
@@ -11,57 +12,99 @@
     font-family: 'Orbitron';
 
     &-right{
-        // font-weight: 600;
-        // position: absolute;
-        // right: 16vh;
-        // bottom: 10vh;
-        // width: 200px;
-        // margin: 0;
+
     }
 
     &__score-container{
         font-weight: 600;
         position: absolute;
-        right: 16vh;
-        bottom: 10vh;
         width: 200px;
         margin: 0;
+
+        @include tablet {
+            bottom: 5vh;
+            right: 8vh;
+        }
+
+        @include desktopLarge{
+            right: 16vh;
+            bottom: 10vh;
+        }
     }
 
     &__title-score{
         
         color: #FF3131;
-        font-size: 4rem;
         font-weight: 600;
         margin: 0;
+
+        @include tablet{
+            font-size: 2rem;
+        }
+
+        @include desktopLarge{
+            font-size: 4rem;
+        }
     }
 
     &__score{
-       font-size: 6rem;
+       
        font-weight: 600;
        margin: 0; 
+
+       @include tablet{
+           font-size: 4rem;
+       }
+
+       @include desktopLarge{
+        font-size: 6rem;
+       }
     }
     
     &__speed-container{
         font-weight: 600;
         position: absolute;
-        right: 16vh;
-        bottom: 25vh;
+       
         width: 200px;
         margin: 0;
+
+        @include tablet {
+            bottom: 20vh;
+            right: 8vh;
+        }
+
+        @include desktopLarge{
+            right: 16vh;
+            bottom: 25vh;
+        }
     }
 
     &__title-speed{
         color: #FF3131;
-        font-size: 4rem;
         font-weight: 600;
         margin: 0;
+
+        @include tablet{
+            font-size: 2rem;
+        }
+
+        @include desktopLarge{
+            font-size: 4rem;
+        }
     }
 
     &__speed{
         font-size: 6rem;
         font-weight: 600;
         margin: 0; 
+        
+        @include tablet{
+            font-size: 4rem;
+        }
+
+        @include desktopLarge{
+            font-size: 6rem;
+        }
     }
     
 }

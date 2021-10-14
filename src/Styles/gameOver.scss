@@ -1,3 +1,6 @@
+@use "font" as *;
+@use "mixins" as *;
+
 .flip-vertical-right {
 	-webkit-animation: flip-vertical-right 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite both;
 	        animation: flip-vertical-right 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite both;
@@ -81,18 +84,37 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        margin: 5rem;
         border-radius: 48px;
-        padding: 4rem 1rem;
+       
+
+        @include tablet {
+          padding: 2rem 1rem;
+          margin: 2.5rem;
+        }
+
+        @include desktopLarge{
+          padding: 4rem 1rem;
+          margin: 5rem;
+        }
 
     }
 
     &__title{
         margin: 0;
         font-weight: 700;
-        font-size: 8rem;
+      
         color: #FF3131;
-        padding-bottom: 4rem;
+      
+
+        @include tablet{
+          font-size: 4rem;
+          padding-bottom: 2rem;
+        }
+
+        @include desktopLarge{
+          font-size: 8rem;
+          padding-bottom: 4rem;
+        }
     }
 
     &__score-container{
@@ -102,28 +124,53 @@
     &__current-score{
         margin: 0;
         font-weight: 600;
-        font-size: 4rem;
         color: #1F51FF;
         text-align: center;
         padding-bottom: 1rem;
+
+        @include tablet{
+          font-size: 2rem;
+        }
+
+        @include desktopLarge{
+          font-size: 4rem;
+        }
     }
 
 
     &__current-value{
         margin: 0;
         font-weight: 700;
-        font-size: 6rem;
         text-align: center;
-        padding-bottom: 2rem;
+ 
+
+        @include tablet{
+          font-size: 4rem;
+          padding-bottom: 1rem;
+        }
+
+        @include desktopLarge{
+          font-size: 6rem;
+          padding-bottom: 2rem;
+        }
     }
 
     &__leaderboards{
         margin: 0;
         font-weight: 700;
-        font-size: 4rem;
         color: #1F51FF;
         text-align: center;
-        padding-bottom: 2rem;
+    
+
+        @include tablet{
+          font-size: 2rem;
+          padding-bottom: 1rem;
+        }
+
+        @include desktopLarge{
+          font-size: 4rem;
+          padding-bottom: 2rem;
+        }
 
         &-list{
             display: flex;
@@ -132,21 +179,27 @@
             align-items: flex-start;
             margin: 0;
             font-weight: 600;
-            font-size: 2.5rem;
             text-align: center;
-            padding-top: 2rem;
-            padding-bottom: 2rem;
+
+            @include tablet{
+              font-size: 1.5rem;
+              padding-bottom: 1rem;
+              padding-top: 1rem;
+            }
+
+            @include desktopLarge{
+              font-size: 2.5rem;
+              padding-top: 2rem;
+              padding-bottom: 2rem;
+            }
         }
 
         &-value{
             flex: 1;
             margin: 0;
-            
-   
         }
 
         &-score{
-
             flex: 1;
             margin: 0;
             padding-left: 4rem;
@@ -165,15 +218,24 @@
        margin-left: auto;
        margin-right: auto;
        width: 100%;
+       
     }
 
     &__restart-title{
-        padding-top: 2rem;
         margin: 0;
         font-weight: 700;
-        font-size: 4rem;
         color: #FF3131;
         text-align: center;
+
+        @include tablet{
+          font-size: 2rem;
+          padding-top: 1rem;
+        }
+
+        @include desktopLarge{
+          font-size: 4rem;
+          padding-top: 2rem;
+        }
     }
 
     

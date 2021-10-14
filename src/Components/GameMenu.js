@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useStore } from '../useStore/useStore'
-import dogeBackground from '../Assets/Texture/dogeBackground.png'
+import dogeBackground from '../Assets/Texture/dogeBackgroundRevised.png'
 import '../Styles/gameMenu.scss'
 import wasdControls from '../Assets/Texture/wasdKeys.png'
 import arrowControls from '../Assets/Texture/arrowKeys.png'

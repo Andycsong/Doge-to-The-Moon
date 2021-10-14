@@ -1,4 +1,5 @@
-
+@use "font" as *;
+@use "mixins" as *;
 
 .menu{
     font-family: 'Orbitron';
@@ -15,6 +16,7 @@
         justify-content: center;
         border-radius: 48px;
         padding: 4rem 1rem;
+
     }
 
 
@@ -23,21 +25,41 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
+
     }
 
 
     &__logo{
-        height: 50vh;
+        @include tablet{
+            width: 50%;
+            height: auto;
+        }
+
+
+        @include desktopLarge{
+            height: 50vh;
+        }
     }
 
     &__start{
-        padding: 2rem;
         color: #1F51FF;
-        font-size: 2rem;
-        font-family: 'Orbitron';
-        border:none;
-        width: 320px;
-        height: 120px;
+
+        @include tablet{
+            font-size: 1rem;
+            padding: 1rem;
+            width: 160px;
+            height: 60px;
+        }
+
+
+        @include desktopLarge{
+            padding: 2rem;
+            font-size: 2rem;
+            font-family: 'Orbitron';
+            border:none;
+            width: 320px;
+            height: 120px;
+        }
     }
     
     &__controls{
@@ -49,11 +71,22 @@
         &-description{
             margin-left: 2rem;
             color: #1F51FF;
-            font-size: 2rem;
+      
             font-family: 'Orbitron';
             border:none;
-            width: 320px;
-            height: 120px;
+           
+
+            @include tablet{
+                font-size: 1rem;
+                width: 160px;
+                height: 60px;
+            }
+
+            @include desktopLarge{
+                width: 320px;
+                height: 120px;
+                font-size: 2rem;
+            }
         }
 
         &-container{
@@ -61,27 +94,68 @@
             flex-direction: row;
             flex-wrap: wrap;
             align-items: center;
+            
+            @include tablet{
+                flex-direction: column;
+                // padding-left: 1rem;
+            }
         }
 
         &-wasd{
-            width: 300px;
+            margin: 0;
+          
 
+            @include tablet{
+                width: 150px;
+            }
+
+            @include desktopLarge{
+                width: 300px; 
+            }
 
             &-layout{
-
+                margin: 0;
                   color: #e1b303;
-                  font-size: 2rem;
+                  
+
+                  @include tablet{
+                      font-size: 1rem;
+                  }
+
+                  @include desktopLarge{
+                    font-size: 2rem;
+                  }
             }
         }
 
         &-arrow{
-            width: 300px;
+            margin: 0;
+            
 
+            @include tablet{
+                width: 150px;
+            }
+
+            @include desktopLarge{
+                width: 300px;
+            }
 
             &-layout{
-
+                margin: 0;
                 color: #e1b303;
-                font-size: 2rem;
+                
+
+                @include tablet{
+                    margin-top: 9.5px;
+                    margin-bottom: 9.5px;
+                    margin-left: 31px;
+                    margin-right: 31px;
+                    font-size: 1rem;
+                }
+
+                @include desktopLarge{
+                    font-size: 2rem;
+                }
             }
         }
     }
@@ -94,5 +168,13 @@
     &__content{
         color:#e1b303 ;
         text-align: center;
+
+        @include tablet{
+            font-size: 1rem;
+        }
+
+        @include desktopLarge{
+            font-size: 2rem;
+        }
     }
 }
