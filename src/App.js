@@ -17,7 +17,7 @@ import GameOver from './Components/GameOver'
 import Terrain from './Components/Terrain'
 
 
-function App({ }) {
+function App() {
   const directionalLight = useStore((s) => s.directionalLight)
 
   return (

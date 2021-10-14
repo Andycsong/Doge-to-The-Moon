@@ -32,6 +32,7 @@ const storeVariable = {
     horizontalV: 0,
     verticalV: 0,
     nextLevel: 0,
+    cubeSpeed: 0.8,
     shouldShiftItems: false,
     currentDifficulty: 0,
     globalColor: new Color()

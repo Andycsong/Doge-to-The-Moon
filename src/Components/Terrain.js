@@ -1,8 +1,8 @@
-import { Color, RepeatWrapping, MirroredRepeatWrapping, BackSide } from 'three'
+import { MirroredRepeatWrapping, BackSide } from 'three'
 import React, { useRef, Suspense, useLayoutEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useTexture } from '@react-three/drei'
-import { useStore, mutation, storeVariable } from '../useStore/useStore'
+import { useStore, storeVariable } from '../useStore/useStore'
 
 import galaxyTexture from '../Assets/Texture/starHex.jpg'
 
@@ -13,19 +13,16 @@ const GAME_SPEED_MULTIPLIER = 0.2
 const TEXTURE_SIZE = PLANE_SIZE * 0.05 // 0.075
 const MOVE_DISTANCE = PLANE_SIZE * 2
 
-const color = new Color(0x000000)
 
 function Terrain() {
     const ground = useRef()
     const groundTwo = useRef()
 
-    const plane = useRef()
     const planeTop = useRef()
     const planeBot = useRef()
     const planeLeft = useRef()
     const planeRight = useRef()
 
-    const planeTwo = useRef()
     const planeTwoTop = useRef()
     const planeTwoBot = useRef()
     const planeTwoLeft = useRef()
@@ -58,7 +55,7 @@ function Terrain() {
                 // Ensures we only move the plane once per pass
                 if (moveCounter.current === 1 || Math.abs(dogeShip.current.position.z) - Math.abs(lastMove.current) <= 10) {
                     // change the level every 4 moves or 4000 meters
-                    if (moveCounter.current % 6 === 0) {
+                    if (moveCounter.current % 4 === 0) {
                         difficultyScale()
                         storeVariable.nextLevel++
                         storeVariable.setSpeed += GAME_SPEED_MULTIPLIER

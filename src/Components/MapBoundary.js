@@ -1,7 +1,7 @@
-import { Cone, RoundedBox } from '@react-three/drei'
+import { Cone } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { useRef } from 'react'
-import * as THREE from 'three'
+
 
 import { useStore, storeVariable } from '../useStore/useStore'
 
@@ -9,7 +9,7 @@ const PLANE_SIZE = 1000
 const WALL_RADIUS = 40
 const LEFT_BOUND = (-PLANE_SIZE / 2) * 0.6
 const RIGHT_BOUND = (PLANE_SIZE / 2) * 0.6
-const UP_BOUND = (PLANE_SIZE / 2) * 0.6
+const UP_BOUND = 275
 const DOWN_BOUND = -25
 
 export default function MapBoundary() {

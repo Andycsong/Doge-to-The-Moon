@@ -5,7 +5,7 @@ import dogeCoin from '../Assets/Texture/dogeCoinIcon.svg'
 
 const GameOver = () => {
     const previousScores = localStorage.getItem('postScores') ? JSON.parse(localStorage.getItem('postScores')) :
-        [...Array(5).fill(0)]
+        [...Array(3).fill(0)]
     const [display, setDisplay] = useState(false)
     const [postScores, setPostScores] = useState(previousScores)
 
@@ -53,7 +53,7 @@ const GameOver = () => {
                             </div>
                         ))}
                         <div className="over__restart-container">
-                            <img onClick={handleRefresh} src={dogeCoin} className="over__restart-button flip-vertical-right"></img>
+                            <img onClick={handleRefresh} src={dogeCoin} alt="doge coin " className="over__restart-button flip-vertical-right"></img>
                             <h2 className='over__restart-title'>PLAY AGAIN?</h2>
                         </div>
                     </div>

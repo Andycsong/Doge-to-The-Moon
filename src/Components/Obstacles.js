@@ -2,7 +2,6 @@ import { MirroredRepeatWrapping, Object3D } from 'three'
 import { useRef, useMemo, useLayoutEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useTexture } from '@react-three/drei'
-import { useThree } from '@react-three/fiber'
 
 import blockTexture from '../Assets/Texture/blockchain.jpg'
 import { storeVariable, useStore } from '../useStore/useStore'
@@ -51,7 +50,7 @@ export default function GenerateBlock() {
         for (let i = 0; i < CUBE_AMOUNT; i++) {
             const x = randomInRange(negativeBound, positiveBound)
             const y = randomInRange(negativeBound, 0)
-            const z = -500 + randomInRange(-400, 400)
+            const z = -750 + randomInRange(-400, 400)
 
             temp.push({ x, y, z })
         }
@@ -75,6 +74,7 @@ export default function GenerateBlock() {
                             b.x, b.z, b.y)
 
                         if (shipDistance < 12) {
+                            storeVariable.cubeSpeed = 0
                             storeVariable.gameSpeed = 0
                             storeVariable.gameOver = true
                         }
@@ -99,15 +99,15 @@ export default function GenerateBlock() {
             }
 
             if (Math.random() < 0.3) {
-                b.x += Math.random() < .04 ? storeVariable.gameSpeed * delta * 500 : 0
+                b.x += Math.random() < .04 ? storeVariable.cubeSpeed * delta * 500 : 0
             } else {
-                b.x -= Math.random() < .04 ? storeVariable.gameSpeed * delta * 500 : 0
+                b.x -= Math.random() < .04 ? storeVariable.cubeSpeed * delta * 500 : 0
             }
 
             if (Math.random() < 0.3) {
-                b.y += Math.random() < .04 ? storeVariable.gameSpeed * delta * 500 : 0
+                b.y += Math.random() < .04 ? storeVariable.cubeSpeed * delta * 500 : 0
             } else {
-                b.y -= Math.random() < .04 ? storeVariable.gameSpeed * delta * 500 : 0
+                b.y -= Math.random() < .04 ? storeVariable.cubeSpeed * delta * 500 : 0
             }
 
             initial.position.set(

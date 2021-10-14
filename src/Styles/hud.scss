@@ -11,6 +11,15 @@
     font-family: 'Orbitron';
 
     &-right{
+        // font-weight: 600;
+        // position: absolute;
+        // right: 16vh;
+        // bottom: 10vh;
+        // width: 200px;
+        // margin: 0;
+    }
+
+    &__score-container{
         font-weight: 600;
         position: absolute;
         right: 16vh;
@@ -31,6 +40,28 @@
        font-size: 6rem;
        font-weight: 600;
        margin: 0; 
+    }
+    
+    &__speed-container{
+        font-weight: 600;
+        position: absolute;
+        right: 16vh;
+        bottom: 25vh;
+        width: 200px;
+        margin: 0;
+    }
+
+    &__title-speed{
+        color: #FF3131;
+        font-size: 4rem;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    &__speed{
+        font-size: 6rem;
+        font-weight: 600;
+        margin: 0; 
     }
     
 }
