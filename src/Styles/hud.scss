@@ -23,7 +23,7 @@
 
         @include tablet {
             bottom: 5vh;
-            right: 8vh;
+            right: 12vh;
         }
 
         @include desktopLarge{
@@ -33,10 +33,10 @@
     }
 
     &__title-score{
-        
         color: #FF3131;
         font-weight: 600;
         margin: 0;
+        font-size: 2rem;
 
         @include tablet{
             font-size: 2rem;
@@ -48,34 +48,36 @@
     }
 
     &__score{
-       
+       font-size: 2rem;
        font-weight: 600;
        margin: 0; 
 
        @include tablet{
-           font-size: 4rem;
+           font-size: 3rem;
        }
 
        @include desktopLarge{
-        font-size: 6rem;
+        font-size: 4rem;
        }
     }
     
     &__speed-container{
         font-weight: 600;
         position: absolute;
-       
         width: 200px;
         margin: 0;
+        bottom: 30vh;
+        right: 10vh;
+
 
         @include tablet {
-            bottom: 20vh;
-            right: 8vh;
+            bottom: 25vh;
+            right: 12vh;
         }
 
         @include desktopLarge{
             right: 16vh;
-            bottom: 25vh;
+            bottom: 30vh;
         }
     }
 
@@ -94,16 +96,16 @@
     }
 
     &__speed{
-        font-size: 6rem;
         font-weight: 600;
         margin: 0; 
+        font-size: 2rem;
         
         @include tablet{
-            font-size: 4rem;
+            font-size: 3rem;
         }
 
         @include desktopLarge{
-            font-size: 6rem;
+            font-size: 4rem;
         }
     }
     
