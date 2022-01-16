@@ -1,112 +1,111 @@
 @use "font" as *;
 @use "mixins" as *;
 
+
 .display{
-    opacity: 1;
+    color: #e1b303;    
+    font-weight: 700;
+    font-family: 'Orbitron';
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    color: #e1b303;    
-    font-weight: 700;
-    font-family: 'Orbitron';
+    overflow-y: hidden;
+    overflow-x: hidden;
 
-    &-right{
+}
 
+.hud__left{
+    position: absolute;
+    left: 3vh;
+    top: 3vh;
+    transform: skew(0deg, 10deg);
+    @include mobileLarge{
+        left: 3vh;
+        top: 5vh;
     }
 
-    &__score-container{
-        font-weight: 600;
-        position: absolute;
-        width: 200px;
-        margin: 0;
-
-        @include tablet {
-            bottom: 5vh;
-            right: 12vh;
-        }
-
-        @include desktopLarge{
-            right: 16vh;
-            bottom: 10vh;
-        }
+    @include tablet{
+        left: 6vh;
     }
 
-    &__title-score{
+    @include desktop{
+        left: 8vh;
+    }
+
+    &-text{
         color: #FF3131;
-        font-weight: 600;
-        margin: 0;
-        font-size: 2rem;
+        font-size: 1.75rem; 
 
         @include tablet{
-            font-size: 2rem;
+            font-size: 2.5rem;
         }
 
-        @include desktopLarge{
-            font-size: 4rem;
-        }
-    }
-
-    &__score{
-       font-size: 2rem;
-       font-weight: 600;
-       margin: 0; 
-
-       @include tablet{
-           font-size: 3rem;
-       }
-
-       @include desktopLarge{
-        font-size: 4rem;
-       }
-    }
-    
-    &__speed-container{
-        font-weight: 600;
-        position: absolute;
-        width: 200px;
-        margin: 0;
-        bottom: 30vh;
-        right: 10vh;
-
-
-        @include tablet {
-            bottom: 25vh;
-            right: 12vh;
-        }
-
-        @include desktopLarge{
-            right: 16vh;
-            bottom: 30vh;
-        }
-    }
-
-    &__title-speed{
-        color: #FF3131;
-        font-weight: 600;
-        margin: 0;
-
-        @include tablet{
-            font-size: 2rem;
-        }
-
-        @include desktopLarge{
-            font-size: 4rem;
-        }
-    }
-
-    &__speed{
-        font-weight: 600;
-        margin: 0; 
-        font-size: 2rem;
-        
-        @include tablet{
+        @include desktop{
             font-size: 3rem;
         }
+    }
 
-        @include desktopLarge{
-            font-size: 4rem;
+    &-score{
+        display: flex;
+        justify-content: center;
+        font-size: 1.5rem;
+
+        @include tablet{
+            font-size: 2.5rem;
+        }
+
+        @include desktop{
+            font-size: 3rem;
         }
     }
+}
+
+.hud__right{
+    position: absolute;
+    right: 3vh;
+    top: 3vh;
+    transform: skew(0deg, -10deg);
     
+    @include mobileLarge{
+        right: 3vh;
+        top: 5vh;
+
+    }
+
+    @include tablet{
+     right: 6vh; 
+    }
+
+    @include desktop{
+       right: 8vh; 
+    }
+
+
+    &-text{
+        color: #FF3131;
+        font-size: 1.75rem;
+
+        @include tablet{
+            font-size: 2.5rem;
+        }
+
+        @include desktop{
+            font-size: 3rem;
+        }
+    }
+
+    &-speed{
+        display: flex;
+        justify-content: center;
+        font-size: 1.5rem;
+
+        @include tablet{
+            font-size: 2.5rem;
+        }
+
+        @include desktop{
+            font-size: 3rem;
+        }
+    }
 }

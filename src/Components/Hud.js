@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { addEffect } from '@react-three/fiber'
 import { storeVariable, useStore } from '../useStore/useStore'
 
@@ -8,12 +8,12 @@ const getScore = () => `${storeVariable.gameScore.toFixed(0)}`
 const getSpeed = () => `${(storeVariable.gameSpeed * 125).toFixed(0)}`
 
 export default function Hud() {
-    // const gameOver = useStore(state => state.gameOver)
-    // const gameStarted = useStore(state => state.gameStarted)
+    const gameOver = useStore(state => state.gameOver)
+    const gameStart = useStore(state => state.gameStart)
 
-    // const [displayHud, setDisplayHud] = useState(false)
 
     // const increaseSpeed = useStore(state => state.increaseSpeed)
+    const [display, setDisplay] = useState(false)
 
     let then = Date.now()
 
@@ -45,18 +45,24 @@ export default function Hud() {
     //     }
     // }, [gameStarted, gameOver])
 
-    return (
+    useEffect(() => {
+        if (gameStart || gameOver) {
+            setDisplay(true)
+        } else if (!gameStart) {
+            setDisplay(false)
+        }
+    }, [gameOver, gameStart,])
+
+    return display ? (
         <div className='display'>
-            <div className='display-right'>
-                <div className='display__score-container'>
-                    <h1 className='display__title-score'> SCORE</h1>
-                    <h1 ref={scoreRef} className='display__score'>{currentScore}</h1>
-                </div>
-                <div className='display__speed-container'>
-                    <h1 className='display__title-speed'> SPEED</h1>
-                    <h1 ref={speedRef} className='display__speed'>{currentSpeed}</h1>
-                </div>
+            <div className='hud__left'>
+                <div className='hud__left-text'>SCORE</div>
+                <div ref={scoreRef} className='hud__left-score'>{currentScore}</div>
+            </div>
+            <div className='hud__right'>
+                <div className='hud__right-text'>SPEED</div>
+                <div ref={speedRef} className='hud__right-speed'>{currentSpeed}</div>
             </div>
         </div>
-    )
+    ) : null
 }

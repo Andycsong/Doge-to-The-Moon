@@ -32,7 +32,7 @@ function App() {
             position={[0, Math.PI, 0]}
           // color={'#e1b303'}
           />
-          <ambientLight intensity={1} />
+          <ambientLight intensity={0} />
           <Ship />
           < MapBoundary />
           <Obstacles />

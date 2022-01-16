@@ -1,109 +1,186 @@
 @use "font" as *;
 @use "mixins" as *;
 
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.scroll{
+    position: absolute;
+    background-color: transparent;
+    left: 0;    
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    overflow-y: scroll;
+}
+
+
 .menu{
     font-family: 'Orbitron';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 1);
+   left: 100%;
+   right: 100%;
+   
+   &__layer{
+        background-color: rgba(0, 0, 0, 1);
+         position: absolute;
+         width: 100%;
+         height: 100%;
+         top: 0;
+         left: 0;
+        //  bottom: 0;
+        //  right: 0;
+
+    }
+    &__logo{
+        width: 100%;
+        display: block;
+        margin: 0;
+        // height: auto;
+        
+        
+        @include tablet{
+            margin: auto;
+            max-height: 50vh;
+        }
+
+        @include desktop{
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+        }
+
+
+        @include desktopLarge{
+           width: 50%;
+        
+        }
+    }
     
     &__container{
         display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 48px;
-        padding: 4rem 1rem;
+        flex-direction: column;
 
     }
 
 
     &__content{
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-
-    }
-
-
-    &__logo{
+        
         @include tablet{
-            width: 50%;
-            height: auto;
+             flex-direction: row;
+             justify-content: space-evenly;
+
         }
 
-
-        @include desktopLarge{
-            height: 50vh;
+        @include desktop{
+            justify-content: space-evenly;
+            margin-left: auto;
+            margin-right: auto;
+            width: 60%;
         }
+
     }
+
+
 
     &__start{
-        color: #1F51FF;
+        font-family: 'Orbitron';
+        background-color: #1F51FF;
+        color: #e1b303;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 8px;
 
-        @include tablet{
-            font-size: 1rem;
-            padding: 1rem;
-            width: 160px;
-            height: 60px;
-        }
-
-
-        @include desktopLarge{
+        @include desktop {
             padding: 2rem;
-            font-size: 2rem;
-            font-family: 'Orbitron';
-            border:none;
-            width: 320px;
-            height: 120px;
         }
     }
     
     &__controls{
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
 
 
         &-description{
-            margin-left: 2rem;
-            color: #1F51FF;
-      
             font-family: 'Orbitron';
-            border:none;
-           
-
-            @include tablet{
-                font-size: 1rem;
-                width: 160px;
-                height: 60px;
+            font-weight: bold;
+            background-color: #1F51FF;
+            // color: #1F51FF;
+            color: #e1b303;
+            font-size: 1rem;
+             border-radius: 8px;
+            padding-bottom: 0.5rem;
+            padding-top: 0.5rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            border-radius: 8px;
+            min-width: 174.91px;
+            max-width: 174.91px;
+            max-height: 72px;
+            min-height: 72px;
+            
+            @include desktop{
+                padding-left: 2rem;
+                padding-right: 2rem;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+                min-height: 84px;
+                max-height: 84px;
+                max-width: 186.91px;
+                min-width: 186.91px;
             }
+            
 
             @include desktopLarge{
-                width: 320px;
-                height: 120px;
-                font-size: 2rem;
+                // font-size: 2rem;
             }
         }
 
         &-container{
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             flex-wrap: wrap;
             align-items: center;
             
             @include tablet{
                 flex-direction: column;
-                // padding-left: 1rem;
             }
         }
 
+        &-image{
+            display: flex;
+            flex-direction:row;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            min-width: 150px;
+            min-height: 100px;
+        }
+
+        &-text{
+            display: flex;
+            flex-direction:row;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            min-width: 150px;
+            min-height: 50px;
+            
+        }
         &-wasd{
             margin: 0;
-          
+            width: 150px;
 
             @include tablet{
                 width: 150px;
@@ -114,6 +191,7 @@
             }
 
             &-layout{
+                min-height: 50px;
                 margin: 0;
                   color: #e1b303;
                   
@@ -130,7 +208,7 @@
 
         &-arrow{
             margin: 0;
-            
+            width: 150px;
 
             @include tablet{
                 width: 150px;
@@ -141,16 +219,13 @@
             }
 
             &-layout{
+                font-size: 2rem;
                 margin: 0;
                 color: #e1b303;
                 
 
                 @include tablet{
-                    margin-top: 9.5px;
-                    margin-bottom: 9.5px;
-                    margin-left: 31px;
-                    margin-right: 31px;
-                    font-size: 1rem;
+                    font-size: 2rem;
                 }
 
                 @include desktopLarge{
@@ -164,13 +239,16 @@
 }
 
 .footer{
-
+      background-color: black;
     &__content{
         color:#e1b303 ;
         text-align: center;
+        font-size: 1rem;
 
         @include tablet{
-            font-size: 1rem;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
         }
 
         @include desktopLarge{

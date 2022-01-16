@@ -49,7 +49,7 @@ export default function GenerateBlock() {
         const temp = []
         for (let i = 0; i < CUBE_AMOUNT; i++) {
             const x = randomInRange(negativeBound, positiveBound)
-            const y = randomInRange(negativeBound, 0)
+            const y = randomInRange(-50, -300)
             const z = -750 + randomInRange(-400, 400)
 
             temp.push({ x, y, z })
@@ -84,7 +84,7 @@ export default function GenerateBlock() {
                 if (b.z - dogeShip.current.position.z > 15) {
 
                     b.z = dogeShip.current.position.z - PLANE_SIZE + randomInRange(-200, 0)
-                    b.y = randomInRange(negativeBound, 0)
+                    b.y = randomInRange(-50, -300)
                     b.x = randomInRange(negativeBound, positiveBound)
 
                 }
@@ -99,15 +99,15 @@ export default function GenerateBlock() {
             }
 
             if (Math.random() < 0.3) {
-                b.x += Math.random() < .04 ? storeVariable.cubeSpeed * delta * 500 : 0
+                b.x += Math.random() < .04 ? Math.sin(storeVariable.cubeSpeed * delta) * 500 : 0
             } else {
-                b.x -= Math.random() < .04 ? storeVariable.cubeSpeed * delta * 500 : 0
+                b.x -= Math.random() < .04 ? Math.sin(storeVariable.cubeSpeed * delta) * 500 : 0
             }
 
             if (Math.random() < 0.3) {
-                b.y += Math.random() < .04 ? storeVariable.cubeSpeed * delta * 500 : 0
+                b.y += Math.random() < .04 ? Math.sin(storeVariable.cubeSpeed * delta) * 500 : 0
             } else {
-                b.y -= Math.random() < .04 ? storeVariable.cubeSpeed * delta * 500 : 0
+                b.y -= Math.random() < .04 ? Math.sin(storeVariable.cubeSpeed * delta) * 500 : 0
             }
 
             initial.position.set(

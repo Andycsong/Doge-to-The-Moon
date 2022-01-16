@@ -1,5 +1,5 @@
-import { Suspense, useRef, useLayoutEffect } from 'react'
-import { useThree, useFrame } from '@react-three/fiber'
+import { Suspense, useRef, useLayoutEffect, useMemo, useEffect } from 'react'
+import { useThree, useFrame, extend } from '@react-three/fiber'
 import { useTexture, Stars } from '@react-three/drei'
 import * as THREE from 'three'
 import { BackSide, MirroredRepeatWrapping } from 'three'
@@ -8,6 +8,8 @@ import backgroundTexture from '../Assets/Texture/neonGalaxy.jpg'
 import dogeMoon from '../Assets/Texture/DogecoinLogo.jfif'
 
 import { storeVariable, useStore } from '../useStore/useStore'
+
+
 
 function Space() {
     const spaceTexture = useTexture(backgroundTexture)
@@ -47,7 +49,7 @@ function Space() {
                 fade
             />
             <mesh ref={space} position={[0, 10, -50]} rotation={[0, 0, Math.PI]}>
-                <hemisphereLight intensity={0.7} />
+                <hemisphereLight intensity={0.4} />
                 <sphereGeometry
                     attach='geometry'
                     args={[2000, 10, 10]}
