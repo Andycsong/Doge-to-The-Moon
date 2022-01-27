@@ -27,7 +27,6 @@ function Space() {
     useFrame((state, delta) => {
         space.current.rotation.z += delta * 0.02 * storeVariable.gameSpeed
         stars.current.rotation.z += delta * 0.02 * storeVariable.gameSpeed
-        space.current.emissive = storeVariable.globalColor
 
         if (dogeShip.current) {
             space.current.position.x = dogeShip.current.position.x
@@ -39,15 +38,6 @@ function Space() {
 
     return (
         <>
-            <Stars
-                ref={stars}
-                radius={800}
-                depth={100}
-                count={10000}
-                factor={40}
-                saturation={1}
-                fade
-            />
             <mesh ref={space} position={[0, 10, -50]} rotation={[0, 0, Math.PI]}>
                 <hemisphereLight intensity={0.4} />
                 <sphereGeometry
@@ -63,6 +53,15 @@ function Space() {
                     map={spaceTexture}
                 />
             </mesh>
+            <Stars
+                ref={stars}
+                radius={800}
+                depth={100}
+                count={10000}
+                factor={40}
+                saturation={1}
+                fade
+            />
         </>
     )
 }
@@ -78,14 +77,14 @@ function Moon() {
 
     useLayoutEffect(() => {
         moonTexture.wrapS = moonTexture.wrapT = MirroredRepeatWrapping
-        moonTexture.repeat.set(0.9, 1.1)
+        moonTexture.repeat.set(1, 1.2)
         moonTexture.anistropy = 16
-        moonTexture.rotation = 0.4
+        moonTexture.rotation = 0.35
     }, [moonTexture])
 
     useFrame((state, delta) => {
         if (dogeShip.current) {
-            moon.current.position.z = dogeShip.current.position.z - 2000
+            moon.current.position.z = dogeShip.current.position.z - 1700
             moon.current.position.x = dogeShip.current.position.x
         }
 
@@ -101,7 +100,7 @@ function Moon() {
             <meshStandardMaterial
                 fog={false}
                 emissive={'#fa26a0'}
-                emissiveIntensity={1}
+                emissiveIntensity={0.8}
                 attach="material"
                 map={moonTexture}
                 color={new THREE.Color('#e1b303')}
@@ -114,18 +113,14 @@ function Fog() {
     const fog = useRef()
 
     useFrame((state, delta) => {
-        fog.current.near = 100
+        fog.current.near = 500
         fog.current.far = 800
-        fog.current.color = storeVariable.globalColor
     })
 
     return (
-        <fog ref={fog} attach="fog" args={['#0ea3e8', 600, 800]} /> //#bf6c00
+        <fog ref={fog} attach="fog" args={['#5aaccc', 500, 800]} />
     )
 }
-
-
-
 
 
 export default function Skybox() {

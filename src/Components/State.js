@@ -4,8 +4,6 @@ import { useFrame } from '@react-three/fiber'
 
 import { useStore, storeVariable } from '../useStore/useStore'
 
-const PLANE_SIZE = 1000
-const LEVEL_SIZE = 6
 const STARTING_GAME_SPEED = 0.8
 
 export default function State() {
@@ -14,11 +12,6 @@ export default function State() {
     const isScore = useStore(state => state.isScore)
     const increaseSpeed = useStore(state => state.increaseSpeed)
     const isGameOver = useStore(state => state.isGameOver)
-    const difficulty = useStore(state => state.difficulty)
-
-    useEffect(() => {
-        storeVariable.currentDifficulty = -(difficulty * PLANE_SIZE * LEVEL_SIZE)
-    }, [difficulty])
 
     useEffect(() => {
         if (gameStart) {
@@ -43,16 +36,12 @@ export default function State() {
             }
         }
 
-
         if (dogeShip.current) {
-            storeVariable.gameScore = Math.abs(dogeShip.current.position.z) - 10
-            storeVariable.shouldShiftItems = dogeShip.current.position.z < -400
-                && dogeShip.current.position.z < storeVariable.currentDifficulty - 400
-                && dogeShip.current.position.z > storeVariable.currentDifficulty - 1000
+            storeVariable.gameScore = Math.abs(dogeShip.current.position.z) + (storeVariable.coinCount) - 10
         }
 
         if (gameStart && storeVariable.gameOver) {
-            isScore(Math.abs(dogeShip.current.position.z) - 10)
+            isScore(storeVariable.gameScore)
             isGameOver(true)
         }
     })

@@ -6,14 +6,15 @@ import '../Styles/hud.scss'
 
 const getScore = () => `${storeVariable.gameScore.toFixed(0)}`
 const getSpeed = () => `${(storeVariable.gameSpeed * 125).toFixed(0)}`
+const getCoinValue = () => `${storeVariable.coinValue.toFixed(0)}`
 
 export default function Hud() {
     const gameOver = useStore(state => state.gameOver)
     const gameStart = useStore(state => state.gameStart)
+    const displayCoin = useStore(state => state.displayCoin)
 
-
-    // const increaseSpeed = useStore(state => state.increaseSpeed)
     const [display, setDisplay] = useState(false)
+
 
     let then = Date.now()
 
@@ -23,27 +24,22 @@ export default function Hud() {
     const speedRef = useRef()
     let currentSpeed = getSpeed()
 
+    const coinValueRef = useRef()
+    let currentCoinValue = getCoinValue()
+
     useEffect(() => addEffect(() => {
         const current = Date.now()
 
         if (current - then > 30) {
             if (scoreRef.current) { scoreRef.current.innerText = getScore() }
             if (speedRef.current) { speedRef.current.innerText = getSpeed() }
-            // scoreRef.current ? scoreRef.current.innerText = getScore() : 0
-            // speedRef.current ? speedRef.current.innerText = getSpeed() : 0
+            if (coinValueRef.current) { coinValueRef.current.innerText = getCoinValue() }
+
 
             then = current
         }
 
     }))
-
-    // useEffect(() => {
-    //     if (gameStarted && !gameOver) {
-    //         setDisplayHud(true)
-    //     } else if (gameOver && !gameStarted) {
-    //         setDisplayHud(false)
-    //     }
-    // }, [gameStarted, gameOver])
 
     useEffect(() => {
         if (gameStart || gameOver) {
@@ -55,6 +51,11 @@ export default function Hud() {
 
     return display ? (
         <div className='display'>
+            {displayCoin ? (
+                <div className='hud__center'>
+                    <div ref={coinValueRef} className='hud__center-text'>{currentCoinValue}</div>
+                </div>
+            ) : null}
             <div className='hud__left'>
                 <div className='hud__left-text'>SCORE</div>
                 <div ref={scoreRef} className='hud__left-score'>{currentScore}</div>

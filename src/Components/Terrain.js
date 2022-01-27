@@ -1,10 +1,10 @@
-import { MirroredRepeatWrapping, BackSide } from 'three'
+import { MirroredRepeatWrapping, BackSide, DoubleSide, FrontSide } from 'three'
 import React, { useRef, Suspense, useLayoutEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useTexture } from '@react-three/drei'
 import { useStore, storeVariable } from '../useStore/useStore'
 
-import galaxyTexture from '../Assets/Texture/starHex.jpg'
+
 
 const PLANE_SIZE = 1000
 const GAME_SPEED_MULTIPLIER = 0.2
@@ -12,6 +12,7 @@ const GAME_SPEED_MULTIPLIER = 0.2
 
 const TEXTURE_SIZE = PLANE_SIZE * 0.05 // 0.075
 const MOVE_DISTANCE = PLANE_SIZE * 2
+
 
 
 function Terrain() {
@@ -28,33 +29,19 @@ function Terrain() {
     const planeTwoLeft = useRef()
     const planeTwoRight = useRef()
 
-
-    const textures = useTexture([galaxyTexture])
-
     const dogeShip = useStore(s => s.dogeShip)
     const difficultyScale = useStore(s => s.difficultyScale)
 
-    useLayoutEffect(() => {
-        textures.forEach(texture => {
-            texture.wrapS = texture.wrapT = MirroredRepeatWrapping
-            texture.repeat.set(TEXTURE_SIZE, TEXTURE_SIZE)
-            texture.anisotropy = 16
-        })
-    }, [textures])
+
 
     const moveCounter = useRef(1)
     const lastMove = useRef(0)
 
-    useFrame((state, delta) => {
+    useFrame(() => {
 
         if (dogeShip.current) {
-            // Alternates moving the two ground planes when we've just passed over onto a new plane, with logic to make sure it only happens once per pass
-            // Checks if weve moved 10 meters into the new plane (-10) (so the old plane is no longer visible)
             if (Math.round(dogeShip.current.position.z) + PLANE_SIZE * moveCounter.current + 10 < -10) {
-
-                // Ensures we only move the plane once per pass
                 if (moveCounter.current === 1 || Math.abs(dogeShip.current.position.z) - Math.abs(lastMove.current) <= 10) {
-                    // change the level every 4 moves or 4000 meters
                     if (moveCounter.current % 4 === 0) {
                         difficultyScale()
                         storeVariable.nextLevel++
@@ -109,10 +96,13 @@ function Terrain() {
                         receiveShadow
                         attach="material"
                         roughness={1}
-                        metalness={-1}
-                        side={BackSide}
+                        metalness={0}
+                        side={DoubleSide}
                         color="blue"
-                        wireframe
+                        // transparent={true}
+                        // opacity={0.1}
+                        wireframe={true}
+
                     />
                 </mesh>
 
@@ -128,10 +118,12 @@ function Terrain() {
                         receiveShadow
                         attach="material"
                         roughness={1}
-                        metalness={-1}
-                        side={BackSide}
+                        metalness={0}
+                        side={DoubleSide}
                         color="blue"
-                        wireframe
+                        // transparent={true}
+                        // opacity={0.4}
+                        wireframe={true}
                     />
                 </mesh>
 
@@ -147,10 +139,12 @@ function Terrain() {
                         receiveShadow
                         attach="material"
                         roughness={1}
-                        metalness={-1}
+                        metalness={0}
                         side={BackSide}
                         color="blue"
-                        wireframe
+                        // transparent={true}
+                        // opacity={0.4}
+                        wireframe={true}
                     />
                 </mesh>
                 <mesh // Right wall
@@ -160,15 +154,17 @@ function Terrain() {
                     rotation={[0, -Math.PI / 2, 0]}
                     position={[300, 150, -(PLANE_SIZE / 2)]}
                 >
-                    <planeBufferGeometry attach="geometry" args={[PLANE_SIZE, 300, 300, 8, 8]} />
+                    <planeBufferGeometry attach="geometry" args={[PLANE_SIZE, 300, 300, 8,]} />
                     <meshStandardMaterial
                         receiveShadow
                         attach="material"
                         roughness={1}
-                        metalness={-1}
-                        side={BackSide}
+                        metalness={0}
+                        side={DoubleSide}
                         color="blue"
-                        wireframe
+                        // transparent={true}
+                        // opacity={0.4}
+                        wireframe={true}
                     />
 
                 </mesh>
@@ -189,10 +185,12 @@ function Terrain() {
                         // map={textures[0]}
                         attach="material"
                         roughness={1}
-                        metalness={-1}
-                        side={BackSide}
+                        metalness={0}
+                        side={DoubleSide}
                         color="blue"
-                        wireframe
+                        // transparent={true}
+                        // opacity={0.4}
+                        wireframe={true}
                     />
                 </mesh>
                 <mesh //Top wall 
@@ -209,10 +207,12 @@ function Terrain() {
                         // map={textures[0]}
                         attach="material"
                         roughness={1}
-                        metalness={-1}
+                        metalness={0}
                         side={BackSide}
                         color="blue"
-                        wireframe
+                        // transparent={true}
+                        // opacity={0.4}
+                        wireframe={true}
                     />
                 </mesh>
                 <mesh // left wall
@@ -229,10 +229,12 @@ function Terrain() {
                         // map={textures[0]}
                         attach="material"
                         roughness={1}
-                        metalness={-1}
+                        metalness={0}
                         side={BackSide}
                         color="blue"
-                        wireframe
+                        // transparent={true}
+                        // opacity={0.4}
+                        wireframe={true}
                     />
                 </mesh>
                 <mesh // right wall
@@ -249,10 +251,12 @@ function Terrain() {
                         // map={textures[0]}
                         attach="material"
                         roughness={1}
-                        metalness={-1}
-                        side={BackSide}
+                        metalness={0}
+                        side={DoubleSide}
                         color="blue"
-                        wireframe
+                        // transparent={true}
+                        // opacity={0.4}
+                        wireframe={true}
                     />
                 </mesh>
             </group>

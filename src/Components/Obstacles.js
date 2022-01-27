@@ -1,17 +1,20 @@
-import { MirroredRepeatWrapping, Object3D } from 'three'
+import { DoubleSide, FrontSide, MirroredRepeatWrapping, Object3D } from 'three'
 import { useRef, useMemo, useLayoutEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useTexture } from '@react-three/drei'
 
 import blockTexture from '../Assets/Texture/blockchain.jpg'
+
 import { storeVariable, useStore } from '../useStore/useStore'
 
 
 const PLANE_SIZE = 1000
 const LEFT_BOUND = (-PLANE_SIZE / 2) * 0.6
 const RIGHT_BOUND = (PLANE_SIZE / 2) * 0.6
-const CUBE_SIZE = 20
-const CUBE_AMOUNT = 800
+const CUBE_SIZE = 25
+// 18
+const OBJECT_COUNT = 400
+// 500
 const WALL_RADIUS = 40
 
 const randomInRange = (from, to) => Math.floor(Math.random() * (to - from + 1)) - to
@@ -47,7 +50,7 @@ export default function GenerateBlock() {
     const block = useMemo(() => {
 
         const temp = []
-        for (let i = 0; i < CUBE_AMOUNT; i++) {
+        for (let i = 0; i < OBJECT_COUNT; i++) {
             const x = randomInRange(negativeBound, positiveBound)
             const y = randomInRange(-50, -300)
             const z = -750 + randomInRange(-400, 400)
@@ -62,18 +65,19 @@ export default function GenerateBlock() {
 
         block.forEach((b, i) => {
             if (dogeShip.current) {
-                if (b.z - dogeShip.current.position.z > -15) { // distance function if the ship is too far away
+                if (b.z - dogeShip.current.position.z > -15) {
                     if (b.x - dogeShip.current.position.x > -15 ||
                         b.x - dogeShip.current.position.x < 15 ||
                         b.y - dogeShip.current.position.y > -15 ||
                         b.y - dogeShip.current.position.y < 15) {
+
                         const shipDistance = ThreeDistance(
                             dogeShip.current.position.x,
-                            dogeShip.current.position.z,
                             dogeShip.current.position.y,
-                            b.x, b.z, b.y)
+                            dogeShip.current.position.z,
+                            b.x, b.y, b.z)
 
-                        if (shipDistance < 12) {
+                        if (shipDistance < 15) {
                             storeVariable.cubeSpeed = 0
                             storeVariable.gameSpeed = 0
                             storeVariable.gameOver = true
@@ -98,16 +102,16 @@ export default function GenerateBlock() {
                 }
             }
 
-            if (Math.random() < 0.3) {
-                b.x += Math.random() < .04 ? Math.sin(storeVariable.cubeSpeed * delta) * 500 : 0
+            if (Math.random() < 0.5) {
+                b.x += Math.random() < .04 ? Math.sin(storeVariable.cubeSpeed * delta) * 400 : 0
             } else {
-                b.x -= Math.random() < .04 ? Math.sin(storeVariable.cubeSpeed * delta) * 500 : 0
+                b.x -= Math.random() < .04 ? Math.sin(storeVariable.cubeSpeed * delta) * 400 : 0
             }
 
-            if (Math.random() < 0.3) {
-                b.y += Math.random() < .04 ? Math.sin(storeVariable.cubeSpeed * delta) * 500 : 0
+            if (Math.random() < 0.5) {
+                b.y += Math.random() < .04 ? Math.sin(storeVariable.cubeSpeed * delta) * 400 : 0
             } else {
-                b.y -= Math.random() < .04 ? Math.sin(storeVariable.cubeSpeed * delta) * 500 : 0
+                b.y -= Math.random() < .04 ? Math.sin(storeVariable.cubeSpeed * delta) * 400 : 0
             }
 
             initial.position.set(
@@ -124,9 +128,9 @@ export default function GenerateBlock() {
     })
 
     return (
-        <instancedMesh ref={mesh} args={[null, null, CUBE_AMOUNT]}>
+        <instancedMesh ref={mesh} args={[null, null, OBJECT_COUNT]}>
             <boxBufferGeometry args={[CUBE_SIZE, CUBE_SIZE, CUBE_SIZE]} />
-            <meshBasicMaterial ref={texture} color={'white'} map={texture} />
+            <meshBasicMaterial ref={texture} color={'#ADD8E6'} map={texture} side={DoubleSide} />
         </instancedMesh>
     )
 }

@@ -15,27 +15,39 @@ import Hud from './Components/Hud'
 import GameMenu from './Components/GameMenu'
 import GameOver from './Components/GameOver'
 import Terrain from './Components/Terrain'
-
+import Bloom from './Components/Bloom'
+import Coin from './Components/Coin'
 
 function App() {
   const directionalLight = useStore((s) => s.directionalLight)
-
+  const directionalLight2 = useStore((s) => s.directionalLight2)
   return (
     <>
       <Canvas mode="concurrent" dpr={[1, 1.5]}>
         <Suspense fallback={null}>
           <State />
+          <Bloom />
           <Skybox />
           <directionalLight
             ref={directionalLight}
-            intensity={5}
-            position={[0, Math.PI, 0]}
-          // color={'#e1b303'}
+            position={[Math.PI, Math.PI, 0]}
+            intensity={3}
+            color={'#5aaccc'}
           />
-          <ambientLight intensity={0} />
+          <directionalLight
+            ref={directionalLight2}
+            position={[-Math.PI, -Math.PI, 0]}
+            intensity={3}
+            color={'#5aaccc'}
+          />
+          <ambientLight
+            intensity={0.5}
+            color={'#5aaccc'}
+          />
           <Ship />
           < MapBoundary />
           <Obstacles />
+          <Coin />
           <Terrain />
           <GameControls />
           <Preload all />

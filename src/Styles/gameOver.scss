@@ -74,10 +74,11 @@
     justify-content: center;
     z-index: 10;
     color: #e1b303;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.9);
     font-family: 'Orbitron';
     user-select: none;
     overflow-y: hidden;
+    cursor: pointer;
 
 
 
@@ -86,7 +87,6 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        border-radius: 48px;
        
 
         @include tablet {
@@ -103,8 +103,7 @@
 
     &__title{
         margin: 0;
-        font-weight: 700;
-      
+        font-weight: 700;      
         color: #FF3131;
       
 

@@ -9,7 +9,7 @@ const PLANE_SIZE = 1000
 const WALL_RADIUS = 40
 const LEFT_BOUND = (-PLANE_SIZE / 2) * 0.6
 const RIGHT_BOUND = (PLANE_SIZE / 2) * 0.6
-const UP_BOUND = 275
+const UP_BOUND = 300
 const DOWN_BOUND = -25
 
 export default function MapBoundary() {
@@ -19,6 +19,10 @@ export default function MapBoundary() {
     const leftWall = useRef()
     const upWall = useRef()
     const downWall = useRef()
+
+    //GOLD =#e1b303
+    //RED = #FF3131;
+    //BLUE = #1F51FF;
 
     useFrame((state, delta) => {
         if (dogeShip.current) {
@@ -42,16 +46,16 @@ export default function MapBoundary() {
         <>
 
             <Cone args={[WALL_RADIUS, PLANE_SIZE * 2, 8]} position={[LEFT_BOUND, 0, -5]} rotation={[Math.PI / 2, 0, Math.PI]} ref={leftWall}>
-                <meshBasicMaterial attach="material" color={'white'} transparent opacity={0} />
+                <meshBasicMaterial attach="material" color={'#FF3131'} visible={false} transparent={true} opacity={1} />
             </Cone>
             <Cone args={[WALL_RADIUS, PLANE_SIZE * 2, 8]} position={[RIGHT_BOUND, 0, -5]} rotation={[Math.PI / 2, 0, Math.PI]} ref={rightWall}>
-                <meshBasicMaterial attach="material" color={'white'} transparent opacity={0} />
+                <meshBasicMaterial attach="material" color={'#FF3131'} visible={false} transparent={true} opacity={1} />
             </Cone>
-            <Cone args={[WALL_RADIUS, PLANE_SIZE * 2, 8]} position={[0, 0, -5]} rotation={[Math.PI / 2, 0, Math.PI]} ref={downWall}>
-                <meshBasicMaterial attach="material" color={'white'} transparent opacity={0} />
+            <Cone args={[WALL_RADIUS, PLANE_SIZE * 2, 8]} position={[RIGHT_BOUND, UP_BOUND, -5]} rotation={[Math.PI / 2, 0, Math.PI]} ref={downWall}>
+                <meshBasicMaterial attach="material" color={'#FF3131'} visible={false} transparent={true} opacity={1} />
             </Cone>
-            <Cone args={[WALL_RADIUS, PLANE_SIZE * 2, 8]} position={[0, UP_BOUND, -5]} rotation={[Math.PI / 2, 0, Math.PI]} ref={upWall}>
-                <meshBasicMaterial attach="material" color={'white'} transparent={true} opacity={0} />
+            <Cone args={[WALL_RADIUS, PLANE_SIZE * 2, 8]} position={[LEFT_BOUND, UP_BOUND, -5]} rotation={[Math.PI / 2, 0, Math.PI]} ref={upWall}>
+                <meshBasicMaterial attach="material" color={'#FF3131'} visible={false} transparent={true} opacity={1} />
             </Cone>
         </>
     )
