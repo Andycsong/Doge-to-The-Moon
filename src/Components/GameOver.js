@@ -3,6 +3,8 @@ import { useStore } from '../useStore/useStore'
 import '../Styles/gameOver.scss'
 import dogeCoin from '../Assets/Texture/dogeCoinIcon.svg'
 
+
+
 const GameOver = () => {
     const previousScores = localStorage.getItem('postScores') ? JSON.parse(localStorage.getItem('postScores')) :
         [...Array(3).fill(0)]
