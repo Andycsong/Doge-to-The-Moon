@@ -1,12 +1,12 @@
 
-# Doge-to-The-Moon
-
 <h2>Click the Link to Play</h2>
 https://doge-to-the-moon-game.herokuapp.com/
 
+# Doge-to-The-Moon
+
 ![DogeBackground](/src/Assets/Texture/dogeBackgroundRevised.png)
 
-<h2> An Endless 3D Runner Game</h2>
+<h3> An Endless 3D Runner Game</h2>
 
 
 
