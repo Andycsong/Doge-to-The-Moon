@@ -1,12 +1,14 @@
 
 # Doge-to-The-Moon
 
+<h2>Click the Link to Play</h2>
+https://doge-to-the-moon-game.herokuapp.com/
+
 ![DogeBackground](/src/Assets/Texture/dogeBackgroundRevised.png)
 
 <h2> An Endless 3D Runner Game</h2>
 
-<h2>Click the Link to Play</h2>
-https://doge-to-the-moon-game.herokuapp.com/
+
 
 **OBJECTIVE** : Players must avoid cubes that randomly generate and move. Navigate the ship as its traversing through the blockchain and headed to the moon
 
