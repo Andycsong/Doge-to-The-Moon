@@ -1,7 +1,7 @@
 
 # Doge-to-The-Moon
 
-![DogeBackground](/client/src/Assets/Texture/dogeBackground.png)
+![DogeBackground](/src/Assets/Texture/dogeBackground.png)
 
 <h2> An Endless 3D Runner Game</h2>
 
